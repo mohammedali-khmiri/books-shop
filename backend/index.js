@@ -1,31 +1,28 @@
-const express = require("express");
-const mysql = require("mysql");
+import express from "express";
+import db from "./dbConnection.js";
+import routerBook from "./routers/book.router.js";
 const app = express();
 
 //middleware
 /* A middleware that parses the incoming request body and makes it available as req.body. */
-// app.use(express.json());
+app.use(express.json());
 
-/* Creating a connection to the database. */
-const db = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "medmysql",
-	database: "test",
+//If there are an auth problem
+//update our root user
+//ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+/* Connecting to the database. */
+db.connect(function (err) {
+	if (err) {
+		console.error("error connecting: " + err);
+		return;
+	}
+	console.log("DB connected !");
 });
 
 /* Routes*/
-app.get("/", (req, res) => {
-	res.json("hello home page");
-});
 
-app.get("/books", (req, res) => {
-	const q = "SELECT * FROM books";
-	db.query(q, (err, data) => {
-		if (err) return res.json(err);
-		return res.json(data);
-	});
-});
+app.use("/api/books", routerBook);
 
 /* Listening to the port. */
 app.listen(8000, () => {
