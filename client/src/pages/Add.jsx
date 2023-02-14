@@ -20,10 +20,7 @@ const Add = () => {
 
 	const handleClick = async (e) => {
 		try {
-			await axios.post(
-				"http://localhost:8000/api/books/create",
-				book
-			);
+			await axios.post("http://localhost:8000/api/books/create", book);
 			navigate("/");
 		} catch (err) {
 			console.log(err);
@@ -40,7 +37,8 @@ const Add = () => {
 				name="title"
 				onChange={handleChange}
 			/>
-			<input
+			<textarea
+				rows={5}
 				type="text"
 				placeholder="desc"
 				name="desc"
