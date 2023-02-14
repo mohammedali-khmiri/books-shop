@@ -1,0 +1,94 @@
+.App {
+	height: 100vh;
+	padding: 0px 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.bookContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+}
+
+.books {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.book {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	padding: 20px;
+	border-radius: 10px;
+	-webkit-box-shadow: 5px 5px 18px -14px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 5px 5px 18px -14px rgba(0, 0, 0, 0.75);
+	box-shadow: 5px 5px 18px -14px rgba(0, 0, 0, 0.75);
+}
+
+img {
+	height: 300px;
+	width: 200px;
+	background-color: aliceblue;
+}
+
+.delete {
+	border: none;
+	padding: 5px 10px;
+	background-color: rgba(255, 0, 0, 0.806);
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.update {
+	border: none;
+	padding: 5px 10px;
+	background-color: rgba(9, 89, 226, 0.806);
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.form {
+	display: flex;
+
+	flex-direction: column;
+	gap: 20px;
+	padding: 30px;
+	border: 1px solid lightgray;
+}
+
+input {
+	width: 250px;
+	padding: 10px;
+	border: none;
+	border-bottom: 1px solid lightgrey;
+}
+
+.formButton {
+	border: none;
+
+	padding: 10px;
+	background-color: rgb(229, 113, 113);
+	color: white;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.addButton {
+	border: none;
+	width: 150px;
+	padding: 10px;
+	background-color: rgb(19, 216, 108);
+	color: white;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+}
