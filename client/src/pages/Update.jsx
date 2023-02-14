@@ -1,24 +1,36 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Update = () => {
-	const [book, setBook] = useState({
-		title: "",
-		desc: "",
-		price: null,
-		cover: "",
-	});
+	const [book, setBook] = useState([]);
+	// const bookInfo = book[0];
+	// console.log(book);
 
 	const navigate = useNavigate();
 	const location = useLocation();
 	const bookId = location.pathname.split("/")[2];
 
+	useEffect(() => {
+		const fetchBook = async () => {
+			try {
+				const res = await axios.get(
+					"http://localhost:8000/api/books/" + bookId
+				);
+				setBook(res.data);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		fetchBook();
+	}, [bookId]);
+
 	const handleChange = (e) => {
 		setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 	};
 
-	const handleClick = async () => {
+	const handleClick = async (e) => {
+		e.preventDefault();
 		try {
 			await axios.put("http://localhost:8000/api/books/" + bookId, book);
 			navigate("/");
@@ -30,6 +42,7 @@ const Update = () => {
 	return (
 		<div className="form">
 			<h1>Update the book</h1>
+
 			<input
 				type="text"
 				placeholder="title"

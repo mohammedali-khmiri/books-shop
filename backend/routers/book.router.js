@@ -4,6 +4,7 @@ import {
 	createBook,
 	deleteBook,
 	updateBook,
+	getBook,
 } from "../controllers/book.controller.js";
 const routerBook = router.Router();
 
@@ -26,6 +27,7 @@ attach it to the request object. */
 // });
 
 routerBook.get("/", getAllBooks);
+routerBook.get("/:id", getBook);
 routerBook.post("/create", createBook);
 routerBook.delete("/:id", deleteBook);
 routerBook.put("/:id", updateBook);

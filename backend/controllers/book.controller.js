@@ -13,6 +13,17 @@ export const getAllBooks = (req, res) => {
 	});
 };
 
+//GET ONE BOOK
+export const getBook = (req, res) => {
+	const bookId = req.params.id;
+	const q = "SELECT * FROM books WHERE id = ?";
+
+	db.query(q, bookId, (err, data) => {
+		if (err) return res.json(err);
+		return res.json(data);
+	});
+};
+
 /**
  * It takes the data from the form and inserts it into the database
  */
